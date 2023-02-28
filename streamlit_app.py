@@ -8,12 +8,12 @@ openai.api_key = st.text_input("Introduce tu clave de API de OpenAI:")
 # Lista de autores españoles
 autores_espanoles = ["Javier Marías", "Carlos Ruiz Zafón", "Arturo Pérez-Reverte", "Almudena Grandes", "Juan José Millás", "María Dueñas", "Javier Cercas", "Rosa Montero", "Eduardo Mendoza", "Luis Landero"]
 
-# Se define la función para generar la trama de un cuento
+# Se define la función para generar la trama de un cuento breve con final inesperado
 def generar_trama(personajes, autor):
     # Se establecen los parámetros para la generación del texto
-    prompt = (f"Escribe una trama de cuento sobre los personajes {personajes}, imitando el estilo de escritura de {autor}.")
-    temperatura = random.uniform(0.7, 1.2)  # Ajuste de temperatura
-    max_tokens = 248  # Ajuste de max_tokens
+    prompt = (f"Escribe una trama breve de cuento sobre los personajes {personajes} con un final inesperado, imitando el estilo de escritura de {autor}.")
+    temperatura = random.uniform(0.8, 1.0)  # Ajuste de temperatura
+    max_tokens = 1024  # Ajuste de max_tokens
 
     # Se genera el texto con el modelo GPT-3 de OpenAI
     completions = openai.Completion.create(
@@ -30,10 +30,10 @@ def generar_trama(personajes, autor):
 # Se define la app de Streamlit
 def main():
     # Título de la app
-    st.title("Generador de tramas de cuentos con OpenAI")
+    st.title("Generador de tramas de cuentos breves con final inesperado")
 
     # Descripción de la app
-    st.write("Esta aplicación genera una trama de cuento a partir de los personajes dados, imitando el estilo de escritura de un autor español seleccionado por el usuario.")
+    st.write("Esta aplicación genera una trama breve de cuento con un final inesperado a partir de los personajes dados, imitando el estilo de escritura de un autor español seleccionado por el usuario.")
 
     # Input de los personajes
     personajes = st.text_input("Introduce los personajes separados por comas:")
@@ -49,4 +49,4 @@ def main():
 
 # Se ejecuta la app
 if __name__ == "__main__":
-    main() 
+    main()
