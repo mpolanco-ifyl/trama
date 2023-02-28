@@ -13,7 +13,7 @@ def generar_trama(personajes, autor):
     # Se establecen los parámetros para la generación del texto
     prompt = (f"Escribe una trama breve de cuento sobre los personajes {personajes} con un final inesperado, imitando el estilo de escritura de {autor}.")
     temperatura = random.uniform(0.8, 1.0)  # Ajuste de temperatura
-    max_tokens = 1024  # Ajuste de max_tokens
+    max_tokens = 512  # Ajuste de max_tokens
 
     # Se genera el texto con el modelo GPT-3 de OpenAI
     completions = openai.Completion.create(
