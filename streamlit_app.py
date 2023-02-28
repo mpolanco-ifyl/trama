@@ -9,9 +9,9 @@ openai.api_key = st.text_input("Introduce tu clave de API de OpenAI:")
 autores_espanoles = ["Javier Marías", "Carlos Ruiz Zafón", "Arturo Pérez-Reverte", "Almudena Grandes", "Juan José Millás", "María Dueñas", "Javier Cercas", "Rosa Montero", "Eduardo Mendoza", "Luis Landero"]
 
 # Se define la función para generar la trama de un cuento
-def generar_trama(tema, autor):
+def generar_trama(personajes, autor):
     # Se establecen los parámetros para la generación del texto
-    prompt = (f"Escribe una trama de cuento sobre el tema {tema}, imitando el estilo de escritura de {autor}.")
+    prompt = (f"Escribe una trama de cuento sobre los personajes {personajes}, imitando el estilo de escritura de {autor}.")
     temperatura = random.uniform(0.7, 1.2)  # Ajuste de temperatura
     max_tokens = 2048  # Ajuste de max_tokens
 
@@ -33,17 +33,17 @@ def main():
     st.title("Generador de tramas de cuentos con OpenAI")
 
     # Descripción de la app
-    st.write("Esta aplicación genera una trama de cuento a partir de un tema dado, imitando el estilo de escritura de un autor español seleccionado por el usuario.")
+    st.write("Esta aplicación genera una trama de cuento a partir de los personajes dados, imitando el estilo de escritura de un autor español seleccionado por el usuario.")
 
-    # Input del tema
-    tema = st.text_input("Introduce el tema de la trama:")
+    # Input de los personajes
+    personajes = st.text_input("Introduce los personajes separados por comas:")
 
     # Input del autor
     autor = st.selectbox("Selecciona el autor a imitar:", autores_espanoles)
 
     # Se genera la trama
     if st.button("Generar trama"):
-        trama = generar_trama(tema, autor)
+        trama = generar_trama(personajes, autor)
         st.write("Aquí está tu trama:")
         st.write(trama)
 
